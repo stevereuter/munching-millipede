@@ -2,7 +2,7 @@
 
 <div align="center">
   <a href="https://steviesaurus-dev.itch.io/munching-millipede">
-    <img src="millipede-thumbnail.png" alt="The Munching Millipede Cover Art" width="400" style="image-rendering: pixelated;" />
+    <img src="assets/millipede-thumbnail.png" alt="The Munching Millipede Cover Art" width="400" style="image-rendering: pixelated;" />
   </a>
   <p><i>Click to play on itch.io</i></p>
 </div>
@@ -21,6 +21,7 @@ The Munching Millipede game is written in Commodore BASIC 2.0 for the Commodore 
 - brainstorming parters and design guides: April and Isabella
 
 ## History
+
 As a kid I always wanted to create video games, but I was too impatient. I would learn a little BASIC here and there, then forget it, and each time I tried was like starting over.
 It wasn't ultil much later in life that I would get back into writing code, and it is as much fun as I alway thought it would be. In the back of my mind I would keep going back to that childhood dream of creating games. I started a couple here and there in JavaScript, but could never quite get one to a finish the finish line. Then one day, I started writing a snake game on the Vice emulator, and that was it. It was finally time to finish one, and not just any one, but one written in the way I would have done it as a kid. This time, I will finsh it for real.
 
