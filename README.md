@@ -9,9 +9,9 @@
 
 ## Introduction
 
-You must guide a hungry millipede around collecting hearts and avoiding obsticles.
+You must guide a hungry millipede around collecting hearts and avoiding obstacles.
 This is a snake like game where the millipede is constantly moving and you control which way it should turn. As you collect hearts, your millipede will grow and score points.
-There are 10 difficulties that increase the number of obsticals to avoid. Higher difficulties also reward you with more points per heart. Every 10th heart you collect, may also add a single obstical to the play area. Good luck.
+There are 10 difficulties that increase the number of obstacles to avoid. Higher difficulties also reward you with more points per heart. Every 10th heart you collect, may also add a single obstacle to the play area. Good luck.
 
 ## Development
 
