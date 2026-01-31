@@ -1,7 +1,7 @@
 # The Munching Millipede
 
 <div align="center">
-  <a href="https://steviesaurus-dev.itch.io/munching-millipede">
+  <a href="https://steviesaurus-dev.itch.io/the-munching-millipede" target="_blank">
     <img src="assets/millipede-thumbnail.png" alt="The Munching Millipede Cover Art" width="400" style="image-rendering: pixelated;" />
   </a>
   <p><i>Click to play on itch.io</i></p>
