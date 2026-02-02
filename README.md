@@ -10,7 +10,7 @@
 ## Introduction
 
 The Munching Millipede is a snake like game originally written for the Commodore 64.
-The player controls the direction of the constantly moving millipede around the play area, collecting heards and avoiding obstacles. For each heart collected, the score is increased and the millipede grows. For every 10 hearts collected a random obstacle may be added to the play area.
+The player controls the direction of the constantly moving millipede around the play area, collecting hearts and avoiding obstacles. For each heart collected, the score is increased and the millipede grows. For every 10 hearts collected a random obstacle may be added to the play area.
 This is a single level design where the user just lasts as long as they can.
 The title screen include an option to change the difficulty from 0 to 9. These simply add a number of randomly placed obstacles at 10x the difficaulty selected.
 
