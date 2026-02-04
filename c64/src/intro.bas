@@ -20,7 +20,6 @@ introScreenSub:
     y=19:tx$="a: left":gosub writeTextSub
     y=20:tx$="d: right":gosub writeTextSub
     y=23:tx$="press space to start":gosub writeTextSubCenterSub
-    pa$=""
 
     introLoopStart:
         get i$

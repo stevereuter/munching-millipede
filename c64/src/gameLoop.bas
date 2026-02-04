@@ -2,14 +2,17 @@ for lp=zr to lm
     get in$
 
     # update position
-    if in$=u$ then if di$<>d$ then di$=in$
-    if in$=d$ then if di$<>u$ then di$=in$
-    if in$=l$ then if di$<>r$ then di$=in$
-    if in$=r$ then if di$<>l$ then di$=in$
-    if di$=u$ then h=h-rw
-    if di$=d$ then h=h+rw
-    if di$=l$ then h=h-n1
-    if di$=r$ then h=h+n1
+    if in$=u$ then if di<>rw then di=ru
+    if in$=d$ then if di<>ru then di=rw
+    if in$=l$ then if di<>n1 then di=tr
+    if in$=r$ then if di<>tr then di=n1
+    if di=ru then h=h-rw
+    if di=rw then h=h+rw
+    if di=tr then h=h-n1
+    if di=n1 then h=h+n1
+    hx=hx+n1
+    if hx>899 then hx=0
+    pa(hx)=h
 
     # check collision
     ov=m(h)
@@ -38,18 +41,11 @@ for lp=zr to lm
     if gw then goto updateTailEnd
     poke ps+t,em
     m(t)=zr
-    la$=mid$(pa$,n2,n1)
-    if la$=u$ then t=t-rw
-    if la$=d$ then t=t+rw
-    if la$=r$ then t=t+n1
-    if la$=l$ then t=t-n1
+    # update tail pointer
+    tx=tx+n1
+    if tx>899 then tx=0
+    t=pa(tx)
     updateTailEnd:
-
-    # update path
-    pa$=pa$+di$
-    if gw then skipRemoveTail
-    pa$=mid$(pa$,n2)
-    skipRemoveTail:
 
     if fd=tr then gosub addNewFoodSub
 

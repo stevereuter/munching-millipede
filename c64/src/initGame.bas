@@ -1,19 +1,23 @@
 print "{brn}{clr}"
 poke bg,12
 sc=0:fc=0:t=361
-# path/history
-pa$=""
+
 # direction
-di$=r$
+di=n1
 # food position
 fd=-1
 
+tx=zr
+hx=zr
+
 for h=t to t+n3
     # set path/history
-    pa$=pa$+r$
+    pa(hx)=h
+    hx=hx+n1
     #include "drawHead.bas"
 next
-h=t+n3
+hx=n3
+h=pa(hx)
 gosub createGameLevelSub
 gosub addNewFoodSub
 gosub writeHighScoreSub
