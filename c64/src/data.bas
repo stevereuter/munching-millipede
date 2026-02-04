@@ -1,29 +1,29 @@
 initBorderArraySub:
-    rem top
+    # top
     for i=0 to 40
         m(i)=-1
     next
-    rem sides
+    # sides
     gosub initBorderArraySidesSub
-    rem bottom
+    # bottom
     for i=960 to 999
         m(i)=-1
     next
 return
 
 initBorderArraySidesSub:
-    rem sides
+    # sides
     for i=79 to 959 step 40
         m(i)=-1:m(i+1)=-1
     next
 return
 
 initTextArraysSub:
-    rem starting countdown text
+    # starting countdown text
     s$(0)="{blk}ready"
     s$(1)=" set  "
     s$(2)="go!{brn}"
-    rem game over text
+    # game over text
     tx$="*            *"
     e$(0)="{blk}**************"
     e$(1)=tx$

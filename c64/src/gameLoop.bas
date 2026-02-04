@@ -1,7 +1,7 @@
 for lp=zr to lm
     get in$
 
-    rem update position
+    # update position
     if in$=u$ then if di$<>d$ then di$=in$
     if in$=d$ then if di$<>u$ then di$=in$
     if in$=l$ then if di$<>r$ then di$=in$
@@ -11,12 +11,12 @@ for lp=zr to lm
     if di$=l$ then h=h-n1
     if di$=r$ then h=h+n1
 
-    rem check collision
+    # check collision
     ov=m(h)
-    rem collision detected, set loop to max to end game
+    # collision detected, set loop to max to end game
     if ov then lp=lm:goto gameLoopDone
 
-    rem check food collision
+    # check food collision
     if fd <> h then goto destroyFood
     gw=tr
     fd=tr
@@ -31,10 +31,10 @@ for lp=zr to lm
     fd=tr
     removeFoodDone:
 
-    rem update head
+    # update head
     #include "drawHead.bas"
 
-    rem update tail
+    # update tail
     if gw then goto updateTailEnd
     poke ps+t,em
     m(t)=zr
@@ -45,7 +45,7 @@ for lp=zr to lm
     if la$=l$ then t=t-n1
     updateTailEnd:
 
-    rem update path
+    # update path
     pa$=pa$+di$
     if gw then skipRemoveTail
     pa$=mid$(pa$,n2)
@@ -55,11 +55,11 @@ for lp=zr to lm
 
     if not gw then gameLoopDone
     gw=zr
-    rem update score
+    # update score
     tx$="{rvon}"+mid$(str$(sc),n2)
     x=n8:y=zr:gosub writeTextSub
 
-    rem update level
+    # update level
     z=fc/10
     if int(z)-z <> zr then goto gameLoopDone
     rn=int(rnd(ti)*918)+41

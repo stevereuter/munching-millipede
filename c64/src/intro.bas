@@ -1,5 +1,5 @@
 introScreenSub:
-    rem clear keyboard buffer
+    # clear keyboard buffer
     poke 198,0
     print "{clr}"
     poke bg,zr
@@ -41,6 +41,6 @@ introScreenSub:
     goto introLoopStart
 
     introLoopDone:
-    rem stop music
+    # stop music
     poke s+4,16
 return

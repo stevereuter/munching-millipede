@@ -18,7 +18,7 @@ playGameOverSoundSub:
 return
 
 playIntroMusicPartSub:
-    rem uses the i from the intro loop to play note
+    # uses the i from the intro loop to play note
     gosub startSoundSub
     if i>15 then i=-1
     i=i+1

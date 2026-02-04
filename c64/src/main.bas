@@ -5,16 +5,16 @@ rem the munching millipede by steve reuter 2024
 startIntroScreen:
 gosub introScreenSub
 
-rem load game
+# load game
 #include "initGame.bas"
 
-rem main loop
+# main loop
 #include "gameLoop.bas"
 
-rem game over
+# game over
 #include "gameOver.bas"
 
-rem utility subs
+# utility subs
 #include "utilitySubs.bas"
 
 #include "sound.bas"

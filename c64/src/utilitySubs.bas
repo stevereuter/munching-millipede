@@ -49,7 +49,8 @@ showStartCountdownSub:
     next
 return
 
-createGameLevelSub: rem create border
+# create border
+createGameLevelSub:
   tx$="{brn}{rvon}{$D1} score:0                              {$D1} "
   x=0:y=0
   gosub writeTextSubInlineSub
@@ -61,7 +62,7 @@ createGameLevelSub: rem create border
   gosub writeTextSubInlineSub
   poke 2023,209
 
-  rem create blocks
+  # create blocks
   for i=0 to lv*10
     rn=int(rnd(ti)*918)+41
     if m(rn) then goto createBlockLoopDone
