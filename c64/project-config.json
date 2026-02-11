@@ -3,9 +3,9 @@
     "description": "Project munching-millipede",
     "toolkit": "basic",
     "sources": ["src/main.bas"],
-    "build": "debug",
+    "build": "release",
     "definitions": [],
     "includes": [],
-    "args": ["--crunch"],
+    "args": [],
     "compiler": ""
 }

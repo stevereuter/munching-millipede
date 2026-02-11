@@ -1,4 +1,4 @@
-rem the munching millipede by steve reuter 2024
+rem the munching millipede by steviesaurus dev v1.0.1
 
 #include "variables.bas"
   
