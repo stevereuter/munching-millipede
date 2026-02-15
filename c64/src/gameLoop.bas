@@ -1,6 +1,8 @@
 for lp=zr to lm
     get in$
 
+    # save last head position
+    lh=h
     # update position
     if in$=u$ then if di<>rw then di=ru
     if in$=d$ then if di<>ru then di=rw

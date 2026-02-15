@@ -1,4 +1,6 @@
-rem the munching millipede by steviesaurus dev v1.0.1
+print "{clr}the munching millipede v1.0.2"
+print "by steviesaurus dev"
+print "loading..."
 
 #include "variables.bas"
   
@@ -18,5 +20,5 @@ gosub introScreenSub
 #include "utilitySubs.bas"
 
 #include "sound.bas"
-#include "data.bas"
 #include "intro.bas"
+#include "data.bas"

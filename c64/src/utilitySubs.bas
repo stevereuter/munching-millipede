@@ -36,16 +36,18 @@ addBlockSub:
 return
 
 showStartCountdownSub:
+    # print the ready set go text
     y=9
     for i=0 to 2
         for x=0 to 250:next x
-        tx$=s$(i):gosub writeTextSubCenterSub
+        tx$=s$(i)
+        gosub writeTextSubCenterSub
     next i
     for i=376 to 382
         b=em
         if m(i) then b=bl
-        poke 1024+i,b
-        poke 55296+i, 9
+        poke ps+i,b
+        poke pc+i, 9
     next
 return
 
@@ -60,7 +62,7 @@ createGameLevelSub:
   next
   x=0:y=24:tx$="{rvon}{$D1}        the munching millipede        "
   gosub writeTextSubInlineSub
-  poke 2023,209
+  poke ps+999,209
 
   # create blocks
   for i=0 to lv*10

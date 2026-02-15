@@ -35,3 +35,14 @@ initTextArraysSub:
     e$(7)="**************"
 return
 
+# custom characters
+# head left
+data 140, 94, 63, 63, 63, 63, 94, 140
+# body
+data 60, 126, 255, 255, 255, 255 ,126, 60
+# head right
+data 49, 122, 252, 252, 252, 252, 122, 49
+# head up
+data 129, 66, 60, 126, 255, 255, 126, 60
+# head down
+data 60, 126, 255, 255, 126, 60, 66, 129
