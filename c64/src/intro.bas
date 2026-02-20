@@ -13,7 +13,7 @@ introScreenSub:
     y=n4:tx$="{rvon}{yel}the munching millipede":gosub writeTextSubCenterSub
     y=9:tx$="{wht}use wasd keys to move"
     gosub writeTextSubCenterSub
-    y=11:tx$="level"+str$(lv):gosub writeTextSubCenterSub
+    y=11:tx$="difficulty"+str$(lv):gosub writeTextSubCenterSub
     y=14:tx$="up and down to change level":gosub writeTextSubCenterSub
     x=16:y=17:tx$="w: up":gosub writeTextSub
     y=18:tx$="s: down":gosub writeTextSub
