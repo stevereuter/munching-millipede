@@ -36,7 +36,7 @@ introScreenSub:
         setLevelDown:
         if lv>0 then lv=lv-1
         showLevel:
-        x=21:y=11:tx$=str$(lv):gosub writeTextSub
+        x=24:y=11:tx$=str$(lv):gosub writeTextSub
     goto introLoopStart
 
     introLoopDone:
