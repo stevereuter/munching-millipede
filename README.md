@@ -4,7 +4,7 @@
   <a href="https://steviesaurus-dev.itch.io/the-munching-millipede" target="_blank">
     <img src="assets/millipede-thumbnail.png" alt="The Munching Millipede Cover Art" width="400" style="image-rendering: pixelated;" />
   </a>
-  <p><i>Click to get on itch.io</i></p>
+  <p><em>Click to get on itch.io</em></p>
 </div>
 
 ## Introduction
@@ -33,3 +33,9 @@ The Munching Millipede game is written in Commodore BASIC 2.0 for the Commodore 
 - I then removed the line numbers and started splitting the code into files, and the speed of the program went up noticeably
 - now I'm working on polishing it off and hosting it for others to enjoy, maybe another kid will be inspired to dive in
 - I've created issues now for the final finishing touches, but plan to release before I work on those
+
+## License
+
+The source code is licensed under the MIT License.
+Game assets (graphics, audio, story content, branding) are © Steviesaurus Dev and are not licensed for reuse. 
+Feel free to learn from the code and use it in your own projects, but please create your own original assets.
