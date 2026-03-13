@@ -1,82 +1,80 @@
-# 1. Stop Interrupts
-poke 56334, peek(56334) and 254
+# Switch VIC to Bank 3
+poke 56576, peek(56576) and 252
 
-# 2. Reveal Character ROM (CPU sees ROM at $D000)
-poke 1, 51
+# Set Screen to 52224, Chars at 49152
+poke 53272, 48
 
-# 3. Copy main characters from ROM to RAM
+# Tell BASIC the screen moved
+poke 648, 204
+
+print "{clr}the munching millipede v1:0:4"
+print "by steviesaurus dev"
+print "{209}{209}{209}{209}{209}{209}{210}"
+
 # letters
-for i=8 to 208
-    c=peek(53248+i)
-    poke 49152+i, c
-    poke 49152+1024+i, 255 - c
+hx=8
+for i=cr+hx to cr+hx+25*8+7
+    read h
+    poke i, h
+    poke 1024+i, 255 - h
 next
 # empty
-for i=256 to 263
-    poke 49152+i, 0
-    poke 49152+1024+i, 255
+hx=32*8
+for i=cr+hx to cr+hx+7
+    read h
+    poke i, h
+    poke 1024+i, 255 - h
 next
 # exclamation mark
 for i=264 to 271
-    c=peek(53248+i)
-    poke 49152+i, c
+    read h
+    poke cr+i, h
 next
 # asterisk
 for i=336 to 343
-    c=peek(53248+i)
-    poke 49152+i, c
+    read h
+    poke cr+i, h
 next
 # numbers. colon
-for i=348 to 472
-    c=peek(53248+i)
-    poke 49152+i, c
-    poke 49152+1024+i, 255 - c
+for i=384 to 471
+    read h
+    poke cr+i, h
+    poke cr+1024+i, 255 - h
 next
 # reversed circle
-for i=648 to 655
-    c=peek(53248+i)
-    poke 49152+1024+i, 255 - c
+hx=81*8
+for i=cr+hx to cr+hx+7
+    read h
+    poke 1024+i, h
 next
 # heart
-for i=664 to 671
-    c=peek(53248+i)
-    poke 49152+i, c
+hx=83*8
+for i=cr+hx to cr+hx+7
+    read h
+    poke i, h
 next
 # checkered block
-for i=816 to 823
-    c=peek(53248+i)
-    poke 49152+i, c
+hx=bl*8
+for i=cr+hx to cr+hx+7
+    read h
+    poke i, h
 next
-
-# 4. Restore I/O and BASIC
-poke 1, 55
-poke 56334, peek(56334) or 1
-
-# 5. Switch VIC to Bank 3
-poke 56576, peek(56576) and 252
-
-# 6. Set Screen to $CC00 (204) and Chars to $C000 (0)
-# The 48 = Screen at $CC00 (3*1K), Chars at $C000 (0*2K)
-poke 53272, 48
-
-# 7. Tell BASIC the screen moved
-poke 648, 204
 
 # update custom left, body, right
 hx=80*8
-for i=49152+hx to 49152+hx+23
+for i=cr+hx to cr+hx+23
     read h
     poke i,h
 next
 # update custom up
 hx=41*8
-for i=49152+hx to 49152+hx+7
+for i=cr+hx to cr+hx+7
     read h
     poke i,h
 next
 # update custom down
 hx=121*8
-for i=49152+hx to 49152+hx+7
+for i=cr+hx to cr+hx+7
     read h
     poke i,h
 next

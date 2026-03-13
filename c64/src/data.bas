@@ -36,13 +36,4 @@ initTextArraysSub:
 return
 
 # custom characters
-# head left
-data 142, 95, 63, 63, 63, 63, 95, 142
-# body
-data 60, 126, 255, 255, 255, 255 ,126, 60
-# head right
-data 113, 250, 252, 252, 252, 252, 250, 113
-# head up
-data 129, 66, 60, 126, 255, 255, 255, 126
-# head down
-data 126, 255, 255, 255, 126, 60, 66, 129
+#include "characterData.bas"

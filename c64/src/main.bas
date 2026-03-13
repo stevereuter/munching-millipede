@@ -1,7 +1,3 @@
-print "{clr}the munching millipede v1.0.3"
-print "by steviesaurus dev"
-print "loading..."
-
 #include "variables.bas"
   
 startIntroScreen:
