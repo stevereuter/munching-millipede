@@ -18,10 +18,15 @@ playGameOverSoundSub:
 return
 
 playIntroMusicPartSub:
-    # uses the i from the intro loop to play note
+    # play not based on time passed
+    ts=(ti-t)
+    i=0
+    if ts>80 then t=ti:goto startSound
+    if ts>60 then i=3:goto startSound
+    if ts>40 then i=2:goto startSound
+    if ts>20 then i=1:goto startSound
+    startSound:
     gosub startSoundSub
-    if i>15 then i=-1
-    i=i+1
     poke s+1,im(i)
     poke s+4,17
 return
@@ -34,19 +39,7 @@ return
 
 seedMusicArraySub:
     im(0)=5
-    im(1)=5
-    im(2)=5
-    im(3)=5
-    im(4)=40
-    im(5)=40
-    im(6)=40
-    im(7)=40
-    im(8)=10
-    im(9)=10
-    im(10)=10
-    im(11)=10
-    im(12)=30
-    im(13)=30
-    im(14)=30
-    im(15)=30
+    im(1)=40
+    im(2)=10
+    im(3)=30
 return
