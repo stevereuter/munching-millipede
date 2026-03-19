@@ -12,6 +12,8 @@ for lp=zr to lm
     if di=rw then h=h+rw
     if di=tr then h=h-n1
     if di=n1 then h=h+n1
+    
+    # update head pointer, set to 0 if at the end of the array
     hx=hx+n1
     if hx>899 then hx=0
     pa(hx)=h
@@ -21,7 +23,7 @@ for lp=zr to lm
     # collision detected, set loop to max to end game
     if ov then lp=lm:goto gameLoopDone
 
-    # check food collision
+    # check food collision/collected
     if fd <> h then goto destroyFood
     gw=tr
     fd=tr
@@ -30,6 +32,7 @@ for lp=zr to lm
     fc=fc+n1
 
     destroyFood:
+    # remove heart if not collected, could be unreachable
     if lp<100 then removeFoodDone
     m(fd)=0
     poke ps+fd,em
@@ -43,7 +46,7 @@ for lp=zr to lm
     if gw then goto updateTailEnd
     poke ps+t,em
     m(t)=zr
-    # update tail pointer
+    # update tail pointer, set to 0 if at the end of the array
     tx=tx+n1
     if tx>899 then tx=0
     t=pa(tx)

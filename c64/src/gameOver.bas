@@ -7,7 +7,7 @@ next
 y=13:tx$="score:"+str$(sc):gosub writeTextSubCenterSub
 for i=41 to 959:m(i)=0:next
 
-# reset for new game
+# reset for new game, creates natural pause on game over screen
 gosub initBorderArraySidesSub
 if sc>hs then hs=sc
 goto startIntroScreen

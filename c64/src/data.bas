@@ -1,3 +1,4 @@
+# initBorderArraySub
 initBorderArraySub:
     # top
     for i=0 to 40
@@ -11,6 +12,7 @@ initBorderArraySub:
     next
 return
 
+# initBorderArraySidesSub
 initBorderArraySidesSub:
     # sides
     for i=79 to 959 step 40
@@ -18,6 +20,7 @@ initBorderArraySidesSub:
     next
 return
 
+# initTextArraysSub
 initTextArraysSub:
     # starting countdown text
     s$(0)="{blk}ready"

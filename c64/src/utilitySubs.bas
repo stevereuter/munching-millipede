@@ -1,4 +1,4 @@
-
+# addNewFoodSub
 addNewFoodSub:
     rn=int(rnd(.)*1000)
     if m(rn) then goto addNewFoodEnd
@@ -9,32 +9,39 @@ addNewFoodSub:
     addNewFoodEnd:
 return
 
+# writeTextSubCenterSub
 writeTextSubCenterSub:
     x=20-len(tx$)/2
     gosub writeTextSub
 return
 
+# writeHighScoreSub
 writeHighScoreSub:
     tx$="{rvon}hi:"+mid$(str$(hs),2)
     x=39-len(tx$):y=0:gosub writeTextSub
 return
 
+# writeTextSub
 writeTextSub:
     poke 211, x:poke 214, y:sys sy
     print tx$
 return
 
+# writeTextSubInlineSub
 writeTextSubInlineSub:
     poke 211,x:poke 214,y:sys sy
     print tx$;
 return
 
+# addBlockSub
 addBlockSub:
+
     m(rn)=tr
     poke ps+rn,bl
     poke pc+rn,br
 return
 
+# showStartCountdownSub
 showStartCountdownSub:
     # print the ready set go text
     y=9

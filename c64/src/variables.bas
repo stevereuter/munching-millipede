@@ -1,4 +1,4 @@
-# head, tail, pointers, loop, and food
+# head, tail, pointers, loop, direction, and food
 h=0:lh=0:t=0:hx=0:tx=0:lp=0:di=0:fd=-1
 # characters, poke registers, colors, level
 mi=81:em=32:hr=83:bl=102:ps=52224:pc=55296:s=54272:sy=58732:gr=13:br=9:lv=2

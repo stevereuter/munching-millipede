@@ -73,21 +73,21 @@ for i=cr+hx to cr+hx+7
     poke i, h
 next
 
-# update custom left, body, right
+# millipede head left, body, head right
 hx=80*8
 for i=cr+hx to cr+hx+23
     read h
     poke i,h
 next
 
-# update custom up
+# millipede head up
 hx=41*8
 for i=cr+hx to cr+hx+7
     read h
     poke i,h
 next
 
-# update custom down
+# millipede head down
 hx=121*8
 for i=cr+hx to cr+hx+7
     read h
