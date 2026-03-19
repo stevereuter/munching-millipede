@@ -1,3 +1,5 @@
+# the munching millipede v1.0.6
+# by steviesaurus dev
 #include "variables.bas"
   
 startIntroScreen:

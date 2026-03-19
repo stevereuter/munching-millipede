@@ -60,7 +60,7 @@ for lp=zr to lm
     # update level
     z=fc/10
     if int(z)-z <> zr then goto gameLoopDone
-    rn=int(rnd(ti)*918)+41
+    rn=int(rnd(.)*918)+41
     if m(rn) then goto gameLoopDone
     if rn=fd then goto gameLoopDone
     i=rn:gosub addBlockSub

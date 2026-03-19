@@ -1,6 +1,6 @@
 
 addNewFoodSub:
-    rn=int(rnd(ti)*1000)
+    rn=int(rnd(.)*1000)
     if m(rn) then goto addNewFoodEnd
     fd=rn
     poke pc+fd,n2
@@ -66,7 +66,7 @@ createGameLevelSub:
 
   # create blocks
   for i=0 to lv*10
-    rn=int(rnd(ti)*918)+41
+    rn=int(rnd(.)*918)+41
     if m(rn) then goto createBlockLoopDone
     poke ps+rn, bl
     m(rn)=-1
