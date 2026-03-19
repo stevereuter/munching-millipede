@@ -1,3 +1,11 @@
+# drawHeadSub
+drawHeadSub:
+    poke pc+h,gr
+    poke ps+h,mi+di
+    poke ps+lh,mi
+    m(h)=-1
+return
+
 # addNewFoodSub
 addNewFoodSub:
     rn=int(rnd(.)*1000)

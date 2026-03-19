@@ -40,7 +40,7 @@ for lp=zr to lm
     removeFoodDone:
 
     # update head
-    #include "drawHead.bas"
+    gosub drawHeadSub
 
     # update tail
     if gw then goto updateTailEnd

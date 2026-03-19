@@ -15,7 +15,7 @@ for h=t to t+n3
     # set path/history
     pa(hx)=h
     hx=hx+n1
-    #include "drawHead.bas"
+    gosub drawHeadSub
     lh=h
 next
 hx=n3
