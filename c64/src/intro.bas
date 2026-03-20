@@ -1,4 +1,4 @@
-# introScreenSub
+# intro Screen Sub
 introScreenSub:
     # clear keyboard buffer
     poke 198,0

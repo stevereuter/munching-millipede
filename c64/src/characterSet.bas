@@ -11,6 +11,7 @@ print "{clr}the munching millipede v1.0.6"
 print "{down}by steviesaurus dev"
 print "{down}{209}{209}{209}{209}{209}{209}{210}"
 
+# add custom characters
 # letters
 hx=8
 for i=cr+hx to cr+hx+25*8+7

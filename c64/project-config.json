@@ -1,6 +1,6 @@
 {
-    "name": "munching-millipede",
-    "description": "Project munching-millipede",
+    "name": "The Munching Millipede",
+    "description": "The Munching Millipede is a game where you control a millipede that collects hearts and grows longer. The goal is to collect as many hearts as possible without crashing into yourself or the obstacles.",
     "toolkit": "basic",
     "sources": ["src/main.bas"],
     "build": "release",

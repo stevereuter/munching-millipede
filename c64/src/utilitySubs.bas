@@ -1,4 +1,4 @@
-# drawHeadSub
+# draw Head Sub
 drawHeadSub:
     poke pc+h,gr
     poke ps+h,mi+di
@@ -6,7 +6,7 @@ drawHeadSub:
     m(h)=-1
 return
 
-# addNewFoodSub
+# add New Food Sub
 addNewFoodSub:
     rn=int(rnd(.)*1000)
     if m(rn) then goto addNewFoodEnd
@@ -17,31 +17,31 @@ addNewFoodSub:
     addNewFoodEnd:
 return
 
-# writeTextSubCenterSub
+# write Text Sub Center Sub
 writeTextSubCenterSub:
     x=20-len(tx$)/2
     gosub writeTextSub
 return
 
-# writeHighScoreSub
+# write High Score Sub
 writeHighScoreSub:
     tx$="{rvon}hi:"+mid$(str$(hs),2)
     x=39-len(tx$):y=0:gosub writeTextSub
 return
 
-# writeTextSub
+# write Text Sub
 writeTextSub:
     poke 211, x:poke 214, y:sys sy
     print tx$
 return
 
-# writeTextSubInlineSub
+# write Text Sub Inline Sub
 writeTextSubInlineSub:
     poke 211,x:poke 214,y:sys sy
     print tx$;
 return
 
-# addBlockSub
+# add Block Sub
 addBlockSub:
 
     m(rn)=tr
@@ -49,7 +49,7 @@ addBlockSub:
     poke pc+rn,br
 return
 
-# showStartCountdownSub
+# show Start Countdown Sub
 showStartCountdownSub:
     # print the ready set go text
     y=9
