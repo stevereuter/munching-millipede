@@ -4,7 +4,9 @@ import {
     drawBackground,
     drawDifficulty,
     drawForeground,
+    drawHeart,
     drawHighScore,
+    drawObstacle,
     drawPlayer,
     drawScore,
     initContextsAsync,
@@ -29,6 +31,7 @@ const path = [];
 let direction = Direction.Right;
 let heartPosition = -1;
 let score = 0;
+let scoreCounter = 0;
 
 function drawPlayerPath() {
     for (let i = 0; i < path.length; i += 1) {
@@ -95,6 +98,31 @@ function getSafeInput() {
     return input;
 }
 
+function getRandomScreenPosition() {
+    const randomIndex = Math.floor(Math.random() * screen.length);
+    if (screen[randomIndex]) return;
+    return randomIndex;
+}
+
+function addNewHeart() {
+    if (heartPosition >= 0) return;
+    const randomIndex = getRandomScreenPosition();
+    if (!randomIndex) return;
+    heartPosition = randomIndex;
+}
+
+async function createRandomObstaclesAsync(count) {
+    do {
+        const randomIndex = getRandomScreenPosition();
+        if (randomIndex) {
+            screen[randomIndex] = true;
+            drawObstacle(randomIndex);
+            await waitAsync(100);
+        }
+        count -= 1;
+    } while (count > 0);
+}
+
 async function gameLoopAsync() {
     const loopStart = Date.now();
     const elapsed = loopStart - gameTime;
@@ -113,18 +141,22 @@ async function gameLoopAsync() {
     }
     screen[position] = true;
     path.push(position);
-    // TODO: check for heart collected
     if (position === heartPosition) {
-        // TODO: update score
-        score += 10 * difficulty;
+        score += 10 + difficulty;
+        scoreCounter += 1;
         drawScore(score);
-        // TODO: add new heart
+        heartPosition = -1;
     } else {
         const tail = path.shift();
         screen[tail] = false;
     }
+    addNewHeart();
     clearMain();
     drawPlayerPath();
+    drawHeart(heartPosition);
+    if (scoreCounter > 0 && scoreCounter % 10 === 0) {
+        await createRandomObstaclesAsync(1);
+    }
 
     gameTime = Date.now();
     requestAnimationFrame(gameLoopAsync);
@@ -133,18 +165,19 @@ async function gameLoopAsync() {
 async function loadLevel() {
     clearForeground();
     drawBackground(Scene.GameBackground);
-    // TODO: draw high score
     initScreen();
     initPlayer();
     drawPlayerPath();
-    // TODO: draw player
     // TODO: draw obstacles based on difficulty
-    // TODO: draw heart
+    await createRandomObstaclesAsync(difficulty * 10);
+    addNewHeart();
+    drawHeart(heartPosition);
     clearKeyBuffer();
     // TODO: draw ready set go sequence
     gameTime = Date.now();
     direction = Direction.Right;
     score = 0;
+    scoreCounter = 0;
     drawScore(score);
     const highScore = getHighScore();
     drawHighScore(highScore);

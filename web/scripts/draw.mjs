@@ -50,6 +50,21 @@ export async function initContextsAsync() {
     images.set(Asset.Sprites, spritesImage);
 }
 
+function drawImageInContext(
+    context,
+    image,
+    sx,
+    sy,
+    sWidth,
+    sHeight,
+    dx,
+    dy,
+    dWidth,
+    dHeight,
+) {
+    context.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+}
+
 /**
  * @description draws background image
  * @param {Scene} screen
@@ -59,7 +74,8 @@ export function drawBackground(screen = Scene.LoadingBackground) {
     const sectionWidth = image.width / 7;
     const x = screen * sectionWidth;
     const backgroundContext = contexts.get(CanvasIds.Background);
-    backgroundContext.drawImage(
+    drawImageInContext(
+        backgroundContext,
         image,
         x,
         0,
@@ -77,7 +93,8 @@ export function drawForeground(screen = Scene.GameOverForeground) {
     const sectionWidth = image.width / 7;
     const x = screen * sectionWidth;
     const foregroundContext = contexts.get(CanvasIds.Foreground);
-    foregroundContext.drawImage(
+    drawImageInContext(
+        foregroundContext,
         image,
         x,
         0,
@@ -94,7 +111,8 @@ export function drawDifficulty(difficulty) {
     const image = images.get(Asset.Sprites);
     const foregroundContext = contexts.get(CanvasIds.Foreground);
     const x = NumberSprite[difficulty];
-    foregroundContext.drawImage(
+    drawImageInContext(
+        foregroundContext,
         image,
         x,
         TextColor.White,
@@ -132,7 +150,8 @@ export function drawPlayer(position, direction) {
     if (direction === Direction.Up) spriteX = PlayerSprite.Up;
     if (direction === Direction.Down) spriteX = PlayerSprite.Down;
 
-    mainContext.drawImage(
+    drawImageInContext(
+        mainContext,
         image,
         spriteX,
         PlayerSpriteRowY,
@@ -152,7 +171,8 @@ export function drawScore(score) {
     for (let i = 0; i < scoreString.length; i += 1) {
         const digit = parseInt(scoreString[i], 10);
         const x = NumberSprite[digit];
-        foregroundContext.drawImage(
+        drawImageInContext(
+            foregroundContext,
             image,
             x,
             TextColor.Grey,
@@ -175,7 +195,8 @@ export function drawHighScore(highScore) {
     const startColumn = endColumn - highScoreLength + 1;
 
     // Draw HI: label — 4th row (PlayerSpriteRowY), 8th column of sprite sheet
-    foregroundContext.drawImage(
+    drawImageInContext(
+        foregroundContext,
         image,
         7 * cellSize,
         PlayerSpriteRowY,
@@ -190,7 +211,8 @@ export function drawHighScore(highScore) {
     for (let i = 0; i < highScoreString.length; i += 1) {
         const digit = parseInt(highScoreString[i], 10);
         const x = NumberSprite[digit];
-        foregroundContext.drawImage(
+        drawImageInContext(
+            foregroundContext,
             image,
             x,
             TextColor.Grey,
@@ -202,4 +224,51 @@ export function drawHighScore(highScore) {
             cellSize,
         );
     }
+}
+
+export function drawHeart(position) {
+    if (position === -1) return; // no heart to draw
+    const image = images.get(Asset.Sprites);
+    const mainContext = contexts.get(CanvasIds.Main);
+
+    const column = position % Screen.X;
+    const row = Math.floor(position / Screen.X);
+    const x = Offset.Left + column * cellSize;
+    const y = Offset.Top + row * cellSize;
+
+    drawImageInContext(
+        mainContext,
+        image,
+        5 * cellSize,
+        3 * cellSize,
+        cellSize,
+        cellSize,
+        x,
+        y,
+        cellSize,
+        cellSize,
+    );
+}
+
+export function drawObstacle(position) {
+    const image = images.get(Asset.Sprites);
+    const foreground = contexts.get(CanvasIds.Foreground);
+
+    const column = position % Screen.X;
+    const row = Math.floor(position / Screen.X);
+    const x = Offset.Left + column * cellSize;
+    const y = Offset.Top + row * cellSize;
+
+    drawImageInContext(
+        foreground,
+        image,
+        6 * cellSize,
+        3 * cellSize,
+        cellSize,
+        cellSize,
+        x,
+        y,
+        cellSize,
+        cellSize,
+    );
 }
