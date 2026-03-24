@@ -25,6 +25,27 @@ The Munching Millipede game is written in Commodore BASIC 2.0 for the Commodore 
 - artwork created in Aseprite
 - brainstorming partners and design guides: April and Isabella
 
+### Building & Packaging
+
+To create a release package with versioning and d64 disk image:
+
+1. **Build the PRG** - Use the VS64 extension in VS Code to build the project, or use the compile command from your build system. This creates `c64/build/The Munching Millipede.prg`.
+
+2. **Package Release** - Run the packaging script from the project root:
+
+    ```bash
+    bash package.sh
+    ```
+
+    This script will:
+    - Replace `###VERSION###` in the PRG binary with the version from `config.json`
+    - Create a d64 disk image using VICE's c1541 tool
+    - Package both the PRG and d64 files into `munching-millipede-vX.X.X.zip`
+
+    The zip file and d64 image are created in `c64/build/` (not committed to git).
+
+3. **Requirements** - The script requires VICE tools to be installed (specifically `c1541` for creating disk images).
+
 ## History
 
 - the first iteration was very simple and running in about 2 hours (BASIC Vice)
@@ -37,5 +58,5 @@ The Munching Millipede game is written in Commodore BASIC 2.0 for the Commodore 
 ## License
 
 The source code is licensed under the MIT License.
-Game assets (graphics, audio, story content, branding) are © Steviesaurus Dev and are not licensed for reuse. 
+Game assets (graphics, audio, story content, branding) are © Steviesaurus Dev and are not licensed for reuse.
 Feel free to learn from the code and use it in your own projects, but please create your own original assets.

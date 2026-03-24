@@ -7,7 +7,7 @@ poke 53272, 48
 # Tell BASIC the screen moved
 poke 648, 204
 
-print "{clr}the munching millipede v1.0.7 c64"
+print "{clr}the munching millipede v###VERSION### c64"
 print "{down}by steviesaurus dev"
 print "{down}{209}{209}{209}{209}{209}{209}{210}"
 
