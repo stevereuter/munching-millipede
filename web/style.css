@@ -30,9 +30,9 @@ body {
 }
 
 #game-main {
-    z-index: 2;
+    z-index: 3;
 }
 
 #game-foreground {
-    z-index: 3;
+    z-index: 2;
 }

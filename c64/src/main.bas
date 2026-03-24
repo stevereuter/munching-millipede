@@ -1,4 +1,4 @@
-# the munching millipede v1.0.6
+# the munching millipede
 # by steviesaurus dev
 #include "variables.bas"
   

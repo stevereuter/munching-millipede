@@ -40,3 +40,13 @@ export function getCanvases() {
         [CanvasIds.Main]: canvases.get(CanvasIds.Main),
     };
 }
+
+export function waitForClickAsync() {
+    return new Promise((resolve) => {
+        const handleClick = () => {
+            document.removeEventListener("click", handleClick);
+            resolve();
+        };
+        document.addEventListener("click", handleClick);
+    });
+}

@@ -107,6 +107,25 @@ export function drawForeground(screen = Scene.GameOverForeground) {
     );
 }
 
+export function drawCountDownScene(scene) {
+    const image = images.get(Asset.Screens);
+    const sectionWidth = image.width / 7;
+    const x = scene * sectionWidth;
+    const mainContext = contexts.get(CanvasIds.Main);
+    drawImageInContext(
+        mainContext,
+        image,
+        x,
+        0,
+        sectionWidth,
+        image.height,
+        0,
+        0,
+        WIDTH,
+        HEIGHT,
+    );
+}
+
 export function drawDifficulty(difficulty) {
     const image = images.get(Asset.Sprites);
     const foregroundContext = contexts.get(CanvasIds.Foreground);
@@ -164,7 +183,7 @@ export function drawPlayer(position, direction) {
     );
 }
 
-export function drawScore(score) {
+export function drawScore(score, gameOver = false) {
     const scoreString = score.toString();
     const image = images.get(Asset.Sprites);
     const foregroundContext = contexts.get(CanvasIds.Foreground);
@@ -175,11 +194,11 @@ export function drawScore(score) {
             foregroundContext,
             image,
             x,
-            TextColor.Grey,
+            gameOver ? TextColor.Black : TextColor.Grey,
             cellSize,
             cellSize,
-            Offset.Left + (8 + i) * cellSize,
-            Offset.Top,
+            Offset.Left + (gameOver ? 23 + i : 8 + i) * cellSize,
+            Offset.Top + (gameOver ? 13 : 0) * cellSize,
             cellSize,
             cellSize,
         );
@@ -194,7 +213,6 @@ export function drawHighScore(highScore) {
     const endColumn = 37;
     const startColumn = endColumn - highScoreLength + 1;
 
-    // Draw HI: label — 4th row (PlayerSpriteRowY), 8th column of sprite sheet
     drawImageInContext(
         foregroundContext,
         image,
