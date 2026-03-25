@@ -13,6 +13,9 @@ concurrency:
     group: release-web-${{ github.event.release.id }}
     cancel-in-progress: false
 
+env:
+    FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
     package-web:
         runs-on: ubuntu-latest
