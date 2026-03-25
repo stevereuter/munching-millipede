@@ -48,8 +48,9 @@ if [ ! -f "$PRG_FILE" ]; then
     exit 1
 fi
 
-# Use c1541 to create a d64 image with the PRG file
-c1541 -format "munching,00" d64 "$D64_FILE" -write "$PRG_FILE" "munching millipede"
+# Use lowercase here so c1541 writes a PETSCII name that BASIC can resolve
+# with LOAD "MILLIPEDE",8,1 in the default C64 character mode.
+c1541 -format "munching,00" d64 "$D64_FILE" -write "$PRG_FILE" "millipede"
 
 # Create the zip package using PowerShell
 echo "📦 Creating zip package..."
