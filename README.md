@@ -14,7 +14,7 @@ The player controls the direction of the constantly moving millipede around the 
 This is a single level design where the user just lasts as long as they can.
 The title screen include an option to change the difficulty from 0 to 9. These simply add a number of randomly placed obstacles at 10x the difficaulty selected.
 
-See the gameplay here https://youtu.be/zihYxw163UA?si=CTn_lfGg3UaNNxm-
+See the gameplay here https://youtu.be/2er58e9Nhv0
 
 ## Development
 
