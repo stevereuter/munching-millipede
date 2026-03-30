@@ -1,13 +1,11 @@
 import { Key, keyDownHandler, keyUpHandler } from "./keyboard.mjs";
 
 const controlElements = {
-    [Key.UP]: document.querySelector("#up"),
-    [Key.DOWN]: document.querySelector("#down"),
-    [Key.LEFT]: document.querySelector("#left"),
-    [Key.RIGHT]: document.querySelector("#right"),
-    [Key.FIRE]: document.querySelector("#fire"),
-    [Key.PAUSE]: document.querySelector("#pause"),
-    [Key.QUIT]: document.querySelector("#quit"),
+    [Key.UP]: document.querySelector("#up-button"),
+    [Key.DOWN]: document.querySelector("#down-button"),
+    [Key.LEFT]: document.querySelector("#left-button"),
+    [Key.RIGHT]: document.querySelector("#right-button"),
+    [Key.FIRE]: document.querySelector("#fire-button"),
 };
 
 export const CanvasIds = {
@@ -24,14 +22,14 @@ Object.values(CanvasIds).forEach((id) => {
 document.addEventListener("keydown", keyDownHandler);
 document.addEventListener("keyup", keyUpHandler);
 // // touch events for mobile
-// Object.entries(controlElements).forEach(([key, element]) => {
-//     element.addEventListener("touchstart", (e) => {
-//         keyDownHandler({ ...e, key });
-//     });
-//     element.addEventListener("touchend", (e) => {
-//         keyUpHandler({ ...e, key });
-//     });
-// });
+Object.entries(controlElements).forEach(([key, element]) => {
+    element.addEventListener("touchstart", (e) => {
+        keyDownHandler({ ...e, key });
+    });
+    element.addEventListener("touchend", (e) => {
+        keyUpHandler({ ...e, key });
+    });
+});
 
 export function getCanvases() {
     return {

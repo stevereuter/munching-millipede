@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>The Munching Millipede</title>
+        <link rel="icon" type="image/png" href="favicon.png">
         <link rel="stylesheet" type="text/css" href="style.css">
         <script defer src="scripts/index.mjs" type="module"></script>
     </head>
@@ -11,6 +12,17 @@
             <canvas id="game-background" width="384" height="272"></canvas>
             <canvas id="game-main" width="384" height="272"></canvas>
             <canvas id="game-foreground" width="384" height="272"></canvas>
+        </div>
+        <div id="mobile-controls">
+            <div id="direction-buttons">
+                <button id="up-button">Up</button>
+                <button id="down-button">Down</button>
+                <button id="left-button">Left</button>
+                <button id="right-button">Right</button>
+            </div>
+            <div>
+                <button id="fire-button">Start</button>
+            </div>
         </div>
         <div
             id="version-overlay"

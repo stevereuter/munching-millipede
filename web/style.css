@@ -1,3 +1,7 @@
+:root {
+    --dpad-cell: calc((50vw - 8px) / 3);
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -35,4 +39,75 @@ body {
 
 #game-foreground {
     z-index: 2;
+}
+
+#mobile-controls {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 16px;
+}
+
+#direction-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, var(--dpad-cell));
+    grid-template-rows: repeat(3, var(--dpad-cell));
+    gap: 4px;
+}
+
+#mobile-controls button {
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+    touch-action: manipulation;
+    font-size: 0;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    background-image: url('images/web-controls.png');
+    background-repeat: no-repeat;
+}
+
+#up-button {
+    width: var(--dpad-cell);
+    height: var(--dpad-cell);
+    background-size: calc(2 * var(--dpad-cell)) calc(5 * var(--dpad-cell));
+    background-position: 0% 0%;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#down-button {
+    width: var(--dpad-cell);
+    height: var(--dpad-cell);
+    background-size: calc(2 * var(--dpad-cell)) calc(5 * var(--dpad-cell));
+    background-position: 100% 0%;
+    grid-column: 2;
+    grid-row: 3;
+}
+
+#left-button {
+    width: var(--dpad-cell);
+    height: var(--dpad-cell);
+    background-size: calc(2 * var(--dpad-cell)) calc(5 * var(--dpad-cell));
+    background-position: 0% 25%;
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#right-button {
+    width: var(--dpad-cell);
+    height: var(--dpad-cell);
+    background-size: calc(2 * var(--dpad-cell)) calc(5 * var(--dpad-cell));
+    background-position: 100% 25%;
+    grid-column: 3;
+    grid-row: 2;
+}
+
+#fire-button {
+    width: calc(2 * var(--dpad-cell));
+    height: calc(3 * var(--dpad-cell));
+    background-size: calc(2 * var(--dpad-cell)) calc(5 * var(--dpad-cell));
+    background-position: 0 100%;
 }

@@ -139,7 +139,6 @@ async function gameLoopAsync() {
         direction = input;
     }
     const position = path[path.length - 1] + direction;
-    console.log("position", position);
     if (screen[position]) {
         gameOverAsync();
         return;
