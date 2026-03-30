@@ -186,12 +186,13 @@ export function drawPlayer(position, direction) {
 export function drawScore(score, gameOver = false) {
     const scoreString = score.toString();
     const image = images.get(Asset.Sprites);
-    const foregroundContext = contexts.get(CanvasIds.Foreground);
+    const id = gameOver ? CanvasIds.Main : CanvasIds.Foreground;
+    const context = contexts.get(id);
     for (let i = 0; i < scoreString.length; i += 1) {
         const digit = parseInt(scoreString[i], 10);
         const x = NumberSprite[digit];
         drawImageInContext(
-            foregroundContext,
+            context,
             image,
             x,
             gameOver ? TextColor.Black : TextColor.Grey,

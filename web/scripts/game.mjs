@@ -82,7 +82,7 @@ function initIntro() {
 }
 
 async function gameOverAsync() {
-    drawForeground(Scene.GameOverForeground);
+    drawCountDownScene(Scene.GameOverForeground);
     drawScore(score, true);
     setHighScore(score);
     drawHighScore(getHighScore());
