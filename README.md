@@ -93,6 +93,8 @@ GitHub setup required:
 
 ## License
 
-The source code is licensed under the MIT License.
-Game assets (graphics, audio, story content, branding) are © Steviesaurus Dev and are not licensed for reuse.
-Feel free to learn from the code and use it in your own projects, but please create your own original assets.
+**Code:** Licensed under the [MIT License](LICENSE)
+
+**Assets:** Licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+Feel free to learn from the code and use it in your own projects. Assets may be shared and adapted under the CC BY-NC-SA 4.0 terms — please provide attribution and share derivative works under the same license.
