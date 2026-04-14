@@ -60,10 +60,12 @@ ZIP_FILE="c64/build/munching-millipede-v${VERSION}.zip"
 rm -f "$ZIP_FILE"
 
 # Use PowerShell to create zip (works on Windows)
-powershell -Command "Compress-Archive -Path 'c64/build/The Munching Millipede.prg', 'c64/build/The Munching Millipede.d64' -DestinationPath '$ZIP_FILE' -Force"
+powershell -Command "Compress-Archive -Path 'c64/build/The Munching Millipede.prg', 'c64/build/The Munching Millipede.d64', 'assets/manual.png', 'LICENSE' -DestinationPath '$ZIP_FILE' -Force"
 
 echo ""
 echo "✅ Packaging complete!"
 echo "📦 Created: $ZIP_FILE"
 echo "   - The Munching Millipede.prg"
 echo "   - The Munching Millipede.d64"
+echo "   - game-manual.png"
+echo "   - LICENSE"

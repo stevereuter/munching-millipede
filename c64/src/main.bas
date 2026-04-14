@@ -1,5 +1,4 @@
-# the munching millipede
-# by steviesaurus dev
+0 rem the munching millipede by steviesaurus dev
 #include "variables.bas"
   
 startIntroScreen:
