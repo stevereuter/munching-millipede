@@ -9,7 +9,7 @@ poke 648, 204
 
 print "{clr}the munching millipede v###VERSION### c64"
 print "{down}by steviesaurus dev"
-print "{down}https://steviesaurus.itch.io/"
+print "{down}https://steviesaurus-dev.itch.io/"
 print "{down}{209}{209}{209}{209}{209}{209}{210}"
 
 # add custom characters
@@ -98,6 +98,20 @@ next
 
 # slash
 hx=47*8
+for i=cr+hx to cr+hx+7
+    read h
+    poke i, h
+next
+
+# comma
+hx=44*8
+for i=cr+hx to cr+hx+7
+    read h
+    poke i, h
+next
+
+# question mark
+hx=63*8
 for i=cr+hx to cr+hx+7
     read h
     poke i, h

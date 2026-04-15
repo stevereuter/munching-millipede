@@ -21,6 +21,7 @@ introScreenSub:
     y=19:tx$="a: left":gosub writeTextSub
     y=20:tx$="d: right":gosub writeTextSub
     y=23:tx$="press space to start":gosub writeTextSubCenterSub
+    tn=0
 
     introLoopStart:
         get i$
@@ -30,6 +31,7 @@ introScreenSub:
         if i$="w" then setLevelUp
         if i$=" " then introLoopDone
         if i$="s" then setLevelDown
+        if i$="t" then tn=-1:goto introLoopDone
         goto introLoopStart
         setLevelUp:
         if lv<9 then lv=lv+1
@@ -43,4 +45,5 @@ introScreenSub:
     introLoopDone:
     # stop music
     poke s+4,16
+    if tn then gosub trainerSub
 return

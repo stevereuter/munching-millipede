@@ -15,6 +15,7 @@ gosub introScreenSub
 
 # utility subs
 #include "utilitySubs.bas"
+#include "trainer.bas"
 
 #include "sound.bas"
 #include "intro.bas"

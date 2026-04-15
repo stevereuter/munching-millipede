@@ -20,6 +20,7 @@ for h=t to t+n3
 next
 hx=n3
 h=pa(hx)
+if tn>0 then gosub setTrainerLengthSub
 gosub createGameLevelSub
 gosub addNewFoodSub
 gosub writeHighScoreSub
