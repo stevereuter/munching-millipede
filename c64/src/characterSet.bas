@@ -8,8 +8,8 @@ poke 53272, 48
 poke 648, 204
 
 print "{clr}the munching millipede v###VERSION### c64"
-print "{down}by steviesaurus dev"
-print "{down}https://steviesaurus-dev.itch.io/"
+print "{down}<c>2026 steviesaurus dev"
+print "{down}steviesaurus-dev.itch.io"
 print "{down}{209}{209}{209}{209}{209}{209}{210}"
 
 # add custom characters
@@ -112,6 +112,27 @@ next
 
 # question mark
 hx=63*8
+for i=cr+hx to cr+hx+7
+    read h
+    poke i, h
+next
+
+# arrow left
+hx=60*8
+for i=cr+hx to cr+hx+7
+    read h
+    poke i, h
+next
+
+# arrow right
+hx=62*8
+for i=cr+hx to cr+hx+7
+    read h
+    poke i, h
+next
+
+# dash
+hx=45*8
 for i=cr+hx to cr+hx+7
     read h
     poke i, h

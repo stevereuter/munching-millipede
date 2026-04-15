@@ -1,4 +1,4 @@
-0 rem the munching millipede by steviesaurus dev
+# the munching millipede (c) 2026 steviesaurus dev
 #include "variables.bas"
   
 startIntroScreen:
