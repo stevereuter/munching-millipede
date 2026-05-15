@@ -1,13 +1,33 @@
 {
     "tasks": [
         {
-            "type": "vs64",
-            "action": "build",
+            "label": "build project + d64",
+            "dependsOrder": "sequence",
+            "dependsOn": ["build project", "create d64 image"],
             "group": {
                 "kind": "build",
                 "isDefault": true
-            },
+            }
+        },
+        {
+            "type": "vs64",
+            "action": "build",
             "label": "build project"
+        },
+        {
+            "label": "create d64 image",
+            "type": "shell",
+            "command": "c1541",
+            "args": [
+                "-format",
+                "munching,00",
+                "d64",
+                "build/The Munching Millipede.d64",
+                "-write",
+                "build/The Munching Millipede.prg",
+                "millipede"
+            ],
+            "problemMatcher": []
         }
     ]
 }
