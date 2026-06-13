@@ -42,16 +42,20 @@ bash package.sh
 
 This script will:
 
-- Build the PRG and inject the version from `config.json` during the build
-- Create a d64 disk image using VICE's c1541 tool
-- Package both the PRG and d64 files into `munching-millipede-vX.X.X.zip`
+- Inject the version from `config.json` into the C64 source during build
+- Build the game PRG with VS64's `bc.py` compiler
+- Create a d64 disk image using VICE's `c1541` tool
+- Add configured binary assets from `config.json` (for example custom charset data)
+- Package the d64, manual image, and readme into `munching-millipede-vX.X.X.zip`
 
 Output files are created in `c64/build/`.
 
 Requirements:
 
+- `python3`
 - VICE tools installed (`c1541`)
-- VS64 extension tools available locally (as referenced in `package.sh`)
+- VS64 extension tools available locally (for `bc.py`, as referenced in `package.sh`)
+- `zip` utility (standard on macOS)
 
 #### Web Package + Pages (Automated)
 
@@ -81,6 +85,9 @@ GitHub setup required:
 1. Run `bash package.sh` locally and keep the generated C64 zip.
 2. Create/publish a GitHub release and upload the C64 zip asset.
 3. The release workflow automatically adds the web zip asset and deploys GitHub Pages.
+
+Release note:
+Version 1.2.0 changes the C64 release format to ship the disk image as the packaged artifact. The zip now includes the `.d64` only, and custom binary assets such as character data are loaded from disk instead of being embedded as BASIC `DATA` statements.
 
 ## History
 

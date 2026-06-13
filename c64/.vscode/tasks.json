@@ -1,9 +1,14 @@
 {
+    "version": "2.0.0",
     "tasks": [
         {
             "label": "build project + d64",
             "dependsOrder": "sequence",
-            "dependsOn": ["build project", "create d64 image"],
+            "dependsOn": [
+                "build project",
+                "create d64 image",
+                "add configured binaries"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -27,6 +32,13 @@
                 "build/The Munching Millipede.prg",
                 "millipede"
             ],
+            "problemMatcher": []
+        },
+        {
+            "label": "add configured binaries",
+            "type": "shell",
+            "command": "python3",
+            "args": ["${workspaceFolder}/tools/add_config_binaries.py"],
             "problemMatcher": []
         }
     ]

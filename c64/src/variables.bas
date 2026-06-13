@@ -7,10 +7,7 @@ lm=5000::rw=40:ru=-40:tr=-1:fc=0:gw=0:ov=0:sc=0:x=0:y=0:rn=0
 # numbers
 zr=0:n1=1:n2=2:n3=3:n4=4:n5=5:n6=6:n8=8
 # directions, index, screen, background color, frequency, high score
-r$="d":l$="a":u$="w":d$="s":i=0:pk=53280:bg=53281:f=0:hs=10:cr=49152
-
-# set custom characters
-#include "characterSet.bas"
+r$="d":l$="a":u$="w":d$="s":i=0:pk=53280:bg=53281:f=0:hs=10
 
 # arrays
 # path array

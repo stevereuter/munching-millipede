@@ -8,12 +8,6 @@ poke 53272, 48
 poke 648, 204
 
 print "{clr}the munching millipede v###VERSION### c64"
-print "{down}<c>2026 steviesaurus dev"
+print "{down}@2026 steviesaurus dev"
 print "{down}steviesaurus-dev.itch.io"
 print "{down}{209}{209}{209}{209}{209}{209}{210}"
-
-# add custom characters
-for i=cr to cr+(256*8)-1
-    read h
-    poke i, h
-next

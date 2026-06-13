@@ -5,8 +5,8 @@
             "type": "vice",
             "request": "launch",
             "name": "Launch Vice",
-            "program": "${workspaceFolder}/build/The Munching Millipede.prg",
-            "args": "-8 \"${workspaceFolder}/build/The Munching Millipede.d64\" -autostart \"${workspaceFolder}/build/The Munching Millipede.d64\"",
+            "program": "${workspaceFolder}/build/The Munching Millipede.d64",
+            "args": "-autostart \"${workspaceFolder}/build/The Munching Millipede.d64\"",
             "preLaunchTask": "${defaultBuildTask}"
         },
         {

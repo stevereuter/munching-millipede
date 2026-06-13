@@ -37,6 +37,3 @@ initTextArraysSub:
     e$(6)=tx$
     e$(7)="**************"
 return
-
-# custom characters from the Aseprite script output
-#include "../assets/c64-character-set_Character_Set_Main_c64_chars.bas"

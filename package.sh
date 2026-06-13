@@ -20,23 +20,23 @@ echo "🔨 Building C64 project..."
 
 # Temporarily inject version for build
 sed -i.bak "s/###VERSION###/$VERSION/g" "c64/src/characterSet.bas"
+trap 'mv -f "c64/src/characterSet.bas.bak" "c64/src/characterSet.bas" 2>/dev/null || true' EXIT
 
 # Use Python compiler to rebuild (from VS64 extension)
-PYTHON_EXE="$HOME/.vscode/extensions/rosc.vs64-2.6.2/resources/python/python.exe"
 BC_EXE="$HOME/.vscode/extensions/rosc.vs64-2.6.2/tools/bc.py"
 
-if [ -f "$PYTHON_EXE" ] && [ -f "$BC_EXE" ]; then
-    "$PYTHON_EXE" "$BC_EXE" --crunch --map "c64/build/The Munching Millipede.bmap" \
+if command -v python3 &> /dev/null && [ -f "$BC_EXE" ]; then
+    python3 "$BC_EXE" --crunch --map "c64/build/The Munching Millipede.bmap" \
         -I "c64" -I "c64/build" \
         -o "c64/build/The Munching Millipede.prg" "c64/src/main.bas"
 else
-    echo "❌ Error: VS64 extension tools not found at $PYTHON_EXE"
-    mv "c64/src/characterSet.bas.bak" "c64/src/characterSet.bas"
+    echo "❌ Error: python3 or VS64 compiler tool not found"
     exit 1
 fi
 
 # Restore original source file
 mv "c64/src/characterSet.bas.bak" "c64/src/characterSet.bas"
+trap - EXIT
 
 # Create d64 image from the PRG file
 echo "💾 Creating d64 image..."
@@ -52,20 +52,27 @@ fi
 # with LOAD "MILLIPEDE",8,1 in the default C64 character mode.
 c1541 -format "munching,00" d64 "$D64_FILE" -write "$PRG_FILE" "millipede"
 
-# Create the zip package using PowerShell
+# Add configured binary assets (for example charset PRGs) to the D64 image.
+if [ -f "c64/tools/add_config_binaries.py" ]; then
+    echo "🧩 Adding configured binaries to d64 image..."
+    python3 "c64/tools/add_config_binaries.py"
+fi
+
+# Create the zip package
 echo "📦 Creating zip package..."
 ZIP_FILE="c64/build/munching-millipede-v${VERSION}.zip"
 
 # Remove old zip if it exists
 rm -f "$ZIP_FILE"
 
-# Use PowerShell to create zip (works on Windows)
-powershell -Command "Compress-Archive -Path 'c64/build/The Munching Millipede.prg', 'c64/build/The Munching Millipede.d64', 'assets/manual.png', 'readme.txt' -DestinationPath '$ZIP_FILE' -Force"
+(
+    cd "c64/build"
+    zip -j "munching-millipede-v${VERSION}.zip" "The Munching Millipede.d64" "../../assets/manual.png" "../../readme.txt" >/dev/null
+)
 
 echo ""
 echo "✅ Packaging complete!"
 echo "📦 Created: $ZIP_FILE"
-echo "   - The Munching Millipede.prg"
 echo "   - The Munching Millipede.d64"
 echo "   - assets/manual.png"
 echo "   - readme.txt"
