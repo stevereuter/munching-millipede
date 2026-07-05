@@ -19,8 +19,8 @@ fi
 echo "🔨 Building C64 project..."
 
 # Temporarily inject version for build
-sed -i.bak "s/###VERSION###/$VERSION/g" "c64/src/characterSet.bas"
-trap 'mv -f "c64/src/characterSet.bas.bak" "c64/src/characterSet.bas" 2>/dev/null || true' EXIT
+sed -i.bak "s/###VERSION###/$VERSION/g" "c64/src/intro.bas"
+trap 'mv -f "c64/src/intro.bas.bak" "c64/src/intro.bas" 2>/dev/null || true' EXIT
 
 # Use Python compiler to rebuild (from VS64 extension)
 BC_EXE="$HOME/.vscode/extensions/rosc.vs64-2.6.2/tools/bc.py"
@@ -35,7 +35,7 @@ else
 fi
 
 # Restore original source file
-mv "c64/src/characterSet.bas.bak" "c64/src/characterSet.bas"
+mv "c64/src/intro.bas.bak" "c64/src/intro.bas"
 trap - EXIT
 
 # Create d64 image from the PRG file

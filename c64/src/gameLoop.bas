@@ -57,7 +57,7 @@ for lp=zr to lm
     if not gw then gameLoopDone
     gw=zr
     # update score
-    tx$="{rvon}"+mid$(str$(sc),n2)
+    tx$="{rvon}"+mid$(str$(sc),n2)+"{rvof}"
     x=n8:y=zr:gosub writeTextSub
 
     # update level
