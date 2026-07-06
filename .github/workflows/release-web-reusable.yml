@@ -3,36 +3,11 @@ name: Shared Web Package and Pages
 on:
     workflow_call:
         inputs:
-            source_mode:
-                description: Source mode: build (from ref) or release_asset (download existing zip)
-                required: false
-                type: string
-                default: build
-            ref:
-                description: Git ref (branch, tag, or commit SHA) to build
-                required: false
-                type: string
-                default: main
-            upload_release_tag:
-                description: Existing release tag to upload the freshly built web zip (optional)
+            release_tag:
+                description: Release tag to attach generated web zip (optional)
                 required: false
                 type: string
                 default: ""
-            release_asset_tag:
-                description: Existing release tag to download zip from when source_mode is release_asset
-                required: false
-                type: string
-                default: ""
-            release_asset_pattern:
-                description: Asset filename pattern to download from release when source_mode is release_asset
-                required: false
-                type: string
-                default: "*-web-v*.zip"
-            deploy_pages:
-                description: Deploy built web output to GitHub Pages
-                required: false
-                type: boolean
-                default: true
 
 env:
     FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -42,28 +17,12 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Validate source mode inputs
-              shell: bash
-              run: |
-                  mode="${{ inputs.source_mode }}"
-                  if [ "$mode" != "build" ] && [ "$mode" != "release_asset" ]; then
-                    echo "Error: source_mode must be 'build' or 'release_asset'" >&2
-                    exit 1
-                  fi
-
-                  if [ "$mode" = "release_asset" ] && [ -z "${{ inputs.release_asset_tag }}" ]; then
-                    echo "Error: release_asset_tag is required when source_mode is release_asset" >&2
-                    exit 1
-                  fi
-
             - name: Check out selected ref
-              if: ${{ inputs.source_mode == 'build' }}
               uses: actions/checkout@v4
               with:
-                  ref: ${{ inputs.ref }}
+                  ref: main
 
             - name: Read version from config.json
-              if: ${{ inputs.source_mode == 'build' }}
               id: version
               shell: bash
               run: |
@@ -75,7 +34,6 @@ jobs:
                   echo "version=$version" >> "$GITHUB_OUTPUT"
 
             - name: Prepare web release files
-              if: ${{ inputs.source_mode == 'build' }}
               shell: bash
               run: |
                   rm -rf dist-web
@@ -85,7 +43,6 @@ jobs:
                   sed -i "s/###VERSION###/${{ steps.version.outputs.version }}/g" dist-web/scripts/index.mjs
 
             - name: Build web zip name
-              if: ${{ inputs.source_mode == 'build' }}
               id: zip
               shell: bash
               run: |
@@ -94,52 +51,25 @@ jobs:
                   echo "zip_name=$zip_name" >> "$GITHUB_OUTPUT"
 
             - name: Create web zip
-              if: ${{ inputs.source_mode == 'build' }}
               shell: bash
               run: |
                   cd dist-web
                   zip -r "../${{ steps.zip.outputs.zip_name }}" .
 
-            - name: Download web zip from existing release
-              if: ${{ inputs.source_mode == 'release_asset' }}
-              env:
-                  GH_TOKEN: ${{ github.token }}
-              shell: bash
-              run: |
-                  rm -rf release-asset dist-web
-                  mkdir -p release-asset dist-web
-
-                  gh release download "${{ inputs.release_asset_tag }}" \
-                    --repo "$GITHUB_REPOSITORY" \
-                    --pattern "${{ inputs.release_asset_pattern }}" \
-                    --dir release-asset
-
-                  zip_count="$(find release-asset -maxdepth 1 -type f -name '*.zip' | wc -l | tr -d ' ')"
-                  if [ "$zip_count" -ne 1 ]; then
-                    echo "Error: expected exactly one zip asset, found $zip_count" >&2
-                    ls -la release-asset
-                    exit 1
-                  fi
-
-                  zip_path="$(find release-asset -maxdepth 1 -type f -name '*.zip' | head -n 1)"
-                  unzip -q "$zip_path" -d dist-web
-
             - name: Upload web zip to release assets
-              if: ${{ inputs.source_mode == 'build' && inputs.upload_release_tag != '' }}
+              if: ${{ inputs.release_tag != '' }}
               uses: softprops/action-gh-release@v2
               with:
-                  tag_name: ${{ inputs.upload_release_tag }}
+                  tag_name: ${{ inputs.release_tag }}
                   files: ${{ steps.zip.outputs.zip_name }}
                   fail_on_unmatched_files: true
 
             - name: Upload Pages artifact
-              if: ${{ inputs.deploy_pages }}
               uses: actions/upload-pages-artifact@v4
               with:
                   path: dist-web
 
     deploy-pages:
-        if: ${{ inputs.deploy_pages }}
         needs: package-web
         runs-on: ubuntu-latest
 
