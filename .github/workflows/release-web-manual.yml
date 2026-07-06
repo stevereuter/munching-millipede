@@ -1,0 +1,41 @@
+name: Manual Web Package and Pages
+
+on:
+    workflow_dispatch:
+        inputs:
+            ref:
+                description: Git ref (branch, tag, or commit SHA) to build
+                required: true
+                default: main
+                type: string
+            release_tag:
+                description: Existing release tag to upload the web zip (optional)
+                required: false
+                default: ""
+                type: string
+            deploy_pages:
+                description: Deploy built web output to GitHub Pages
+                required: true
+                default: true
+                type: boolean
+
+permissions:
+    contents: write
+    pages: write
+    id-token: write
+
+concurrency:
+    group: manual-web-${{ github.run_id }}
+    cancel-in-progress: false
+
+env:
+    FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+    run-shared-manual-web:
+        uses: ./.github/workflows/release-web-reusable.yml
+        with:
+            ref: ${{ inputs.ref }}
+            release_tag: ${{ inputs.release_tag }}
+            deploy_pages: ${{ inputs.deploy_pages }}
+        secrets: inherit
