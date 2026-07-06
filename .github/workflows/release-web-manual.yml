@@ -3,15 +3,28 @@ name: Manual Web Package and Pages
 on:
     workflow_dispatch:
         inputs:
+            source_mode:
+                description: Source mode for deploy (build or release_asset)
+                required: true
+                default: release_asset
+                type: choice
+                options:
+                    - release_asset
+                    - build
             ref:
                 description: Git ref (branch, tag, or commit SHA) to build
-                required: true
+                required: false
                 default: main
                 type: string
-            release_tag:
-                description: Existing release tag to upload the web zip (optional)
+            release_asset_tag:
+                description: Existing release tag to pull the web zip from (used for release_asset mode)
                 required: false
                 default: ""
+                type: string
+            release_asset_pattern:
+                description: Release asset filename pattern (used for release_asset mode)
+                required: false
+                default: "*-web-v*.zip"
                 type: string
             deploy_pages:
                 description: Deploy built web output to GitHub Pages
@@ -35,7 +48,10 @@ jobs:
     run-shared-manual-web:
         uses: ./.github/workflows/release-web-reusable.yml
         with:
+            source_mode: ${{ inputs.source_mode }}
             ref: ${{ inputs.ref }}
-            release_tag: ${{ inputs.release_tag }}
+            upload_release_tag: ""
+            release_asset_tag: ${{ inputs.release_asset_tag }}
+            release_asset_pattern: ${{ inputs.release_asset_pattern }}
             deploy_pages: ${{ inputs.deploy_pages }}
         secrets: inherit

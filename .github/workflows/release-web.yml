@@ -20,7 +20,8 @@ jobs:
     run-shared-release-web:
         uses: ./.github/workflows/release-web-reusable.yml
         with:
+            source_mode: build
             ref: ${{ github.event.release.tag_name }}
-            release_tag: ${{ github.event.release.tag_name }}
+            upload_release_tag: ${{ github.event.release.tag_name }}
             deploy_pages: true
         secrets: inherit
